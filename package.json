@@ -23,6 +23,7 @@
         "@types/marked": "^4.0.7",
         "codemirror": "^5.65.15",
         "codemirror-spell-checker": "1.1.2",
+        "esbuild": "^0.25.0",
         "marked": "^4.1.0",
         "prettier": "^3.4.2"
     },
