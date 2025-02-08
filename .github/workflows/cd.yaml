@@ -12,9 +12,7 @@ on:
       - master
 
 jobs:
-
   audit:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -27,13 +25,12 @@ jobs:
       - run: npm audit --omit=dev
 
   test:
-
-    needs: [ audit ]
+    needs: [audit]
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [ '14', '16', '18' ]
+        node-version: ['14', '16', '18']
 
     steps:
       - uses: actions/setup-node@v3
@@ -62,8 +59,7 @@ jobs:
           retention-days: 7
 
   deploy:
-
-    needs: [ test ]
+    needs: [test]
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
 

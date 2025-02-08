@@ -1,5 +1,5 @@
 // Create new instance
-import EasyMDE = require('./easymde');
+import EasyMDE = require('./easymde')
 
 const editor = new EasyMDE({
     autoDownloadFontAwesome: false,
@@ -13,26 +13,26 @@ const editor = new EasyMDE({
     previewClass: 'my-custom-class',
     spellChecker: false,
     onToggleFullScreen: (full: boolean) => {
-        console.log('FullscreenToggled', full);
+        console.log('FullscreenToggled', full)
     },
     theme: 'someOtherTheme',
     minHeight: '200px',
-});
+})
 
 // Editor functions
-const value = editor.value() as string;
-editor.value(value.toUpperCase());
+const value = editor.value() as string
+editor.value(value.toUpperCase())
 
-const sbs = editor.isSideBySideActive() as boolean;
-const fullscreen = editor.isFullscreenActive() as boolean;
+const sbs = editor.isSideBySideActive() as boolean
+const fullscreen = editor.isFullscreenActive() as boolean
 
 // Access to codemirror object
-editor.codemirror.setOption('readOnly', true);
+editor.codemirror.setOption('readOnly', true)
 
 // Static properties
 EasyMDE.toggleItalic = (editor: EasyMDE) => {
-    console.log('SomeButtonOverride');
-};
+    console.log('SomeButtonOverride')
+}
 
 const editor2 = new EasyMDE({
     autoDownloadFontAwesome: undefined,
@@ -52,7 +52,7 @@ const editor2 = new EasyMDE({
         {
             name: 'alert',
             action: (editor: EasyMDE) => {
-                alert('This is from a custom button action!');
+                alert('This is from a custom button action!')
                 // Custom functions have access to the `editor` instance.
             },
             className: 'fa fas fa-star',
@@ -61,7 +61,7 @@ const editor2 = new EasyMDE({
             noMobile: false,
             attributes: {
                 'data-custom': 'attribute',
-            }
+            },
         },
         '|',
         {
@@ -95,18 +95,18 @@ const editor2 = new EasyMDE({
                     attributes: {
                         'data-custom': 'some value',
                         'data-custom-2': 'another value',
-                    }
+                    },
                 },
             ],
         },
     ],
-});
+})
 
-editor2.clearAutosavedValue();
-editor2.updateStatusBar('upload-image', 'Drag & drop images!');
+editor2.clearAutosavedValue()
+editor2.updateStatusBar('upload-image', 'Drag & drop images!')
 
-EasyMDE.togglePreview(editor2);
-EasyMDE.toggleSideBySide(editor2);
+EasyMDE.togglePreview(editor2)
+EasyMDE.toggleSideBySide(editor2)
 
 const editorImages = new EasyMDE({
     uploadImage: true,
@@ -130,10 +130,10 @@ const editorImages = new EasyMDE({
         fileTooLarge: 'Image too big',
         importError: 'Something went oops!',
     },
-    errorCallback: errorMessage => {
-        console.error(errorMessage);
+    errorCallback: (errorMessage) => {
+        console.error(errorMessage)
     },
-});
+})
 
 const editorImagesCustom = new EasyMDE({
     uploadImage: true,
@@ -141,9 +141,9 @@ const editorImagesCustom = new EasyMDE({
     imageCSRFToken: undefined,
     imageMaxSize: 10485760,
     imageUploadFunction: (file: File, onSuccess, onError) => {
-        console.log(file);
-        onSuccess('http://image.url/9.png');
-        onError('Failed because reasons.');
+        console.log(file)
+        onSuccess('http://image.url/9.png')
+        onError('Failed because reasons.')
     },
     imageTexts: {
         sbInit: 'Drag & drop images!',
@@ -159,15 +159,15 @@ const editorImagesCustom = new EasyMDE({
         fileTooLarge: 'Image too big',
         importError: 'Something went oops!',
     },
-    errorCallback: errorMessage => {
-        console.error(errorMessage);
+    errorCallback: (errorMessage) => {
+        console.error(errorMessage)
     },
     renderingConfig: {
         codeSyntaxHighlighting: true,
         markedOptions: {
             silent: true,
-            highlight(code: string, lang: string, callback?: (error: (any | undefined), code: string) => void): string {
-                return 'something';
+            highlight(code: string, lang: string, callback?: (error: any | undefined, code: string) => void): string {
+                return 'something'
             },
         },
     },
@@ -175,7 +175,7 @@ const editorImagesCustom = new EasyMDE({
         image: 'Insert URL',
     },
     syncSideBySidePreviewScroll: true,
-});
+})
 
 new EasyMDE({
     toolbarButtonClassPrefix: 'mde',
@@ -195,7 +195,7 @@ new EasyMDE({
         },
         text: 'Stored: ',
     },
-});
+})
 
 new EasyMDE({
     sideBySideFullscreen: false,
@@ -214,25 +214,25 @@ new EasyMDE({
         '|',
         'link',
     ],
-});
+})
 
 new EasyMDE({
     direction: 'ltr',
-});
+})
 
 new EasyMDE({
     direction: 'rtl',
-});
+})
 
 new EasyMDE({
     previewRender: (plainText: string) => {
-        return '<pre>' + plainText + '</pre>';
-    }
-});
+        return '<pre>' + plainText + '</pre>'
+    },
+})
 
 new EasyMDE({
     previewRender: (plainText: string, preview) => {
-        preview.innerHTML = '<pre>' + plainText + '</pre>';
-        return null;
-    }
-});
+        preview.innerHTML = '<pre>' + plainText + '</pre>'
+        return null
+    },
+})
