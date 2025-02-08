@@ -71,4 +71,5 @@ compile({
     ...defaultOptions,
     entryPoints: [`./src/js/easymde.js`],
     outfile: `./dist/easymde.js`,
+    globalName: 'EasyMDE',
 })

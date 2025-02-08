@@ -30,16 +30,12 @@
     "devDependencies": {
         "browserify": "^17.0.0",
         "cypress": "^13.2.0",
-        "eslint": "^8.50.0",
-        "eslint-plugin-cypress": "^2.15.1",
-        "typescript": "^5.2.2",
-        "vinyl-buffer": "^1.0.1",
-        "vinyl-source-stream": "^2.0.0"
+        "typescript": "^5.2.2"
     },
     "repository": "github:Ionaru/easy-markdown-editor",
     "scripts": {
         "dev": "node bin/build.js --dev",
-        "build": "node build.js",
+        "build": "node bin/build.js",
         "prettier": "npx prettier --write .",
         "test": "npm run lint && npm run test:types && npm run e2e",
         "lint": "gulp lint",

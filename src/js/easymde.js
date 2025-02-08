@@ -3147,3 +3147,4 @@ EasyMDE.prototype.toTextArea = function () {
 }
 
 module.exports = EasyMDE
+window.EasyMDE = EasyMDE;
