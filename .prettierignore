@@ -1,0 +1,5 @@
+*.md
+**/dist
+**/vendor
+composer.lock
+node_modules/
