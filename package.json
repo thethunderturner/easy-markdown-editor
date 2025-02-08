@@ -39,7 +39,7 @@
     "repository": "github:Ionaru/easy-markdown-editor",
     "scripts": {
         "build": "node build.js",
-        "prettier": "npx prettier --write ." ,
+        "prettier": "npx prettier --write .",
         "test": "npm run lint && npm run test:types && npm run e2e",
         "lint": "gulp lint",
         "cypress:lint": "eslint cypress",
