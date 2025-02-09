@@ -29,7 +29,7 @@
     },
     "devDependencies": {
         "browserify": "^17.0.0",
-        "cypress": "^13.2.0",
+        "cypress": "^14.0.2",
         "typescript": "^5.2.2"
     },
     "repository": "github:Ionaru/easy-markdown-editor",
