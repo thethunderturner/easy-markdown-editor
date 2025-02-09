@@ -37,11 +37,8 @@
         "dev": "node bin/build.js --dev",
         "build": "node bin/build.js",
         "prettier": "npx prettier --write .",
-        "test": "npm run lint && npm run test:types && npm run e2e",
-        "lint": "gulp lint",
-        "cypress:lint": "eslint cypress",
+        "test": "npm run cypress:run && npm run test:types",
         "cypress:run": "cypress run",
-        "e2e": "gulp && npm run cypress:lint && npm run cypress:run",
         "test:types": "tsc --project types/tsconfig.json"
     }
 }

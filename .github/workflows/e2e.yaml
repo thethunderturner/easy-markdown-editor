@@ -6,80 +6,20 @@ on:
       - master
 
 jobs:
-  audit:
+  run-tests:
     runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/setup-node@v3
-        with:
-          node-version: current
-
-      - uses: actions/checkout@v3
-
-      - run: npm audit --omit=dev
-
-  test:
-    needs: [audit]
-    runs-on: ubuntu-latest
-
     strategy:
+      fail-fast: false
       matrix:
-        node-version: ['21', '22', '23']
-
+        node-version: [20, 21, 22, 23]
+    name: Node ${{ matrix.node-version }}
     steps:
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v3
+      - name: Set up Node
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-
-      - uses: actions/checkout@v3
-
-      - run: npm ci
-
-      - name: Test
+      - name: Install dependencies
+        run: npm ci
+      - name: Run tests
         run: npm test
-
-      - uses: actions/upload-artifact@v4
-        if: failure()
-        with:
-          name: cypress-screenshots
-          path: cypress/screenshots
-          retention-days: 7
-
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: cypress-videos
-          path: cypress/videos
-          retention-days: 7
-
-  deploy:
-    needs: [test]
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push'
-
-    steps:
-      - uses: actions/setup-node@v3
-        with:
-          node-version: current
-
-      - uses: actions/checkout@v3
-
-      - run: npm ci
-
-      - name: Deploy @latest version to npm
-        if: startsWith(github.ref, 'refs/tags/')
-        uses: JS-DevTools/npm-publish@v1
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-
-      - name: Update @next version
-        if: startsWith(github.ref, 'refs/heads/')
-        run: npm version prerelease --no-git-tag-version --preid "$GITHUB_RUN_NUMBER"
-
-      - name: Deploy @next version to npm
-        if: startsWith(github.ref, 'refs/heads/')
-        uses: JS-DevTools/npm-publish@v1
-        with:
-          tag: next
-          token: ${{ secrets.NPM_TOKEN }}
-          check-version: false

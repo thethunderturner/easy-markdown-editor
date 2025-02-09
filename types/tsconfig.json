@@ -1,6 +1,5 @@
 {
     "compilerOptions": {
-        "target": "es3",
         "ignoreDeprecations": "5.0",
         "strict": true,
         "noImplicitReturns": true,
