@@ -29,19 +29,16 @@
     },
     "devDependencies": {
         "browserify": "^17.0.0",
-        "cypress": "^13.2.0",
+        "cypress": "^14.0.2",
         "typescript": "^5.2.2"
     },
     "repository": "github:Ionaru/easy-markdown-editor",
     "scripts": {
-        "dev": "node bin/build.js --dev",
-        "build": "node bin/build.js",
-        "prettier": "npx prettier --write .",
-        "test": "npm run lint && npm run test:types && npm run e2e",
-        "lint": "gulp lint",
-        "cypress:lint": "eslint cypress",
+        "dev": "node ./bin/build.mjs --dev",
+        "build": "node ./bin/build.mjs",
         "cypress:run": "cypress run",
-        "e2e": "gulp && npm run cypress:lint && npm run cypress:run",
+        "prettier": "npx prettier --write .",
+        "test": "npm run cypress:run && npm run test:types",
         "test:types": "tsc --project types/tsconfig.json"
     }
 }
