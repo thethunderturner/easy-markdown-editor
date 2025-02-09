@@ -1,4 +1,4 @@
-name: fix-code-style
+name: code_style
 
 on:
   pull_request:
